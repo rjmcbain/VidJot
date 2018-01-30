@@ -1,11 +1,11 @@
-<nav class="navbar navbar-expand-sm navbar-dark bg-primary mb-3">
+
+<nav class="navbar navbar-expand-sm mb-3">
       <div class="class"></div>
-        <a class="navbar-brand" href="/">VidJot</a>
+        <a class="navbar-brand" href="/">Beer Trader</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
             aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
@@ -16,18 +16,30 @@
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
+               {{#if user}}
                 <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbarDropdownMenuLink">Video Ideas</a>
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbarDropdownMenuLink">Your Profile</a>
                     <div class="dropdown-menu">
-                        <a href="/ideas" class="dropdown-item">Ideas</a>
-                        <a href="/ideas/add" class="dropdown-item">Add Idea</a>
+                        <a href="/ideas" class="dropdown-item">Your Beers</a>
+                        <a href="/ideas/add" class="dropdown-item">Add Beer</a>
                     </div>
                 </li>
+                 <li class="nav-item">
+                    <a href="/users/logout" class="nav-link">Logout</a>
+                </li>
+                {{else}}
+                 <li class="nav-item">
+                    <a href="/users/login" class="nav-link">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/users/register" class="nav-link">Register</a>
+                </li>
+                {{/if}}
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            <form method="GET" action="/beerList" class="form-inline my-2 my-lg-0">
+                  <input class="form-control mr-sm-2" type="text" name="beerinfo" placeholder="Find a beer">
+                  <input class="btn my-2 my-sm-0" type="submit"></button>
+                </form>
         </div>
         </div>
     </nav>
